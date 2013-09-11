@@ -1,0 +1,33 @@
+---
+layout: default
+title: Reading List
+---
+
+<p>
+I love reading.  Currently, my main interests are technology, psychology, fitness, personal development, and fiction.	
+</p>
+
+<div class="books">
+
+{% for post in site.categories.book %}
+
+<div class="book section">
+	<a name="{{post.title}}"></a>
+
+	    <h4>{{ post.date | date: "%B %d, %Y" }}</h4>		
+	
+		<img class="cover" src="{{ post.image }}" alt="{{post.title}}"/>
+	
+		<div class="about">
+	     	<h2><a href="{{post.url}}">{{ post.title }}</a></h2>		
+	    	<h3>{{ post.author }}</h3>		
+
+		</div>
+
+</div>	
+ 
+ {% endfor %}
+
+</div>
+
+

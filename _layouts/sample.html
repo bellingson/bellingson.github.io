@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>{{page.title}}</title>	
+    <link rel="stylesheet" href="/css/html5reset-1.6.1.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+	<div id="page">
+		
+		<div id="head">
+			
+			<br class="clear" /><!-- // head -->			
+		</div>	
+				
+		<div id="content">
+			
+				<div id="posts">
+					
+					<h1>{{page.title}}</h1>
+	
+					{{content}}
+				
+					<br class="clear" /> <!-- // posts -->					
+				</div>
+				
+				<div id="sidebar">
+					
+					<div class="postlinks">
+						
+					<a href="/">Home</a>						
+
+					 {% for post in site.categories.post %}
+
+						<a href="{{post.url}}">{{post.title}}</a>
+
+					  {% endfor %}
+
+					</div>
+
+
+						<h3>Stories</h3>
+		
+						<div class="postlinks">
+
+
+
+						 {% for post in site.categories.story reversed %}
+
+							<a href="{{post.url}}">{{post.title}}</a>
+
+						  {% endfor %}
+
+						</div>
+						
+						<h3>Jokes</h3>
+		
+						<div class="postlinks">
+
+
+
+						 {% for post in site.categories.jokes reversed %}
+
+							<a href="{{post.url}}">{{post.title}}</a>
+
+						  {% endfor %}
+
+						</div>
+					
+
+					<br class="clear" /> <!-- // sidebar -->
+				</div>
+	
+			<br class="clear" /> <!-- // content -->			
+		</div>
+	
+	
+
+	</div> <!-- // page -->
+	
+	
+</body>	
+</html>
