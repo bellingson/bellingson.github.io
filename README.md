@@ -1,2 +1,2 @@
-benellingson.github.io
+bellingson.github.io
 ======================

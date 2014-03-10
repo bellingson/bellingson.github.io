@@ -32,8 +32,8 @@ These are the languages and frameworks I use often.  I have experience with many
 <ul>
 	<li>Git</li>
 	<li>Gradle</li>
-	<li>IntelliJ</li>
-	<li>TextMate &amp; vim</li>
+	<li>IntelliJ, Xcode, Eclipse</li>
+	<li>Sublime Text, TextMate &amp; vim</li>
 	<li>Linux, Apache, Tomcat, MySQL, Oracle</li>
 </ul>
 
@@ -45,29 +45,50 @@ These are the languages and frameworks I use often.  I have experience with many
 <h3>Portfolio</h3>
 
 <div class="projects">
-{% for post in site.categories.project reverse %}
+{% assign posts = site.categories.project %}
+{% for page in (0..posts.size) %} 
+{% for post in posts  %}
+
+	{% if post.order == page %}
 
 <div class="project section">
 	<a name="{{post.title}}"></a>
+
+		{% if post.link %}
 	
-		<img class="cover" src="{{ post.image }}" alt="{{post.title}}"/>
+		<a href="{{post.link}}">
+		<img class="cover" src="{{ post.image }}" alt="{{post.title}}"/></a>
+
 	
 		<div class="about">
 	     	<h2><a href="{{post.link}}">{{ post.title }}</a></h2>		
 	    	<h3>{{ post.dates }}</h3>		
 		</div>
 
+		{% else %}
+
+			<img class="cover" src="{{ post.image }}" alt="{{post.title}}"/>
+			<div class="about">
+	     	<h2>{{ post.title }}</h2>		
+	    	<h3>{{ post.dates }}</h3>		
+		</div>
+
+		{% endif %}
+
 </div>	
+{% endif %}
  
  {% endfor %}
+ {% endfor %}
+
 
 </div>
 
 
-<h3><a href="reading_list.html">Reading List</a></h3>
+<h3><a href="reading_list.html">Latest Reading</a></h3>
 
 <p>
-I'm very bookish.  Reading and doing are my preferred modes of learning.  My main interests are technology, psychology, fitness, personal development, and fiction.	
+My main interests are technology, psychology, fitness, personal development, and fiction.	
 </p>
 <p>
 In 2012, I began keeping a list of the books I read.  Books are listed by the date I finished reading it.
@@ -76,17 +97,19 @@ In 2012, I began keeping a list of the books I read.  Books are listed by the da
 
 <div class="books">
 
-{% for post in site.categories.book %}
+{% for post in site.categories.book limit: 3 %}
 
 <div class="book section">
 	<a name="{{post.title}}"></a>
 
 	    <h4>{{ post.date | date: "%B %d, %Y" }}</h4>		
 	
-		<img class="cover" src="{{ post.image }}" alt="{{post.title}}"/>
+		<div class="cover">
+				<a href="{{post.link}}"><img class="cover" src="{{ post.image }}" alt="{{post.title}}"/></a>			
+		</div>
 	
 		<div class="about">
-	     	<h2><a href="{{post.url}}">{{ post.title }}</a></h2>		
+	     	<h2><a href="{{post.link}}">{{ post.title }}</a></h2>		
 	    	<h3>{{ post.author }}</h3>		
 
 		</div>
